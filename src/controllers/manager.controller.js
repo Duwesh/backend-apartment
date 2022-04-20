@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
+//importing Manager model
 const Manager = require("../models/manager.model");
 
 router.post(

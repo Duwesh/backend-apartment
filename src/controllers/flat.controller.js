@@ -6,6 +6,7 @@ const router = express.Router();
 // importing model
 const Flat = require("../models/flat.model");
 
+//Creating new Flat
 router.post("/", async (req, res) => {
   try {
     let flat = await Flat.create(req.body);
@@ -15,6 +16,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+//Updating the flat with flat id
 router.patch("/:id", async (req, res) => {
   try {
     await Flat.findByIdAndUpdate(req.params.id, req.body);
@@ -24,20 +26,22 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
+//Fetching all flat data
 router.get("/", async (req, res) => {
   try {
-    let flat = await Flat.find().lean().exec();
-    res.status(200).send(flat);
+    let flatData = await Flat.find().lean().exec();
+    res.status(200).send(flatData);
   } catch (error) {
     console.log(error);
   }
 });
 
-router.get("/:page_count", async (req, res) => {
+//For pagination
+router.get("/:page_no", async (req, res) => {
   try {
-    let skip_count = +req.params.page_count;
-    skip_count = (skip_count - 1) * 10;
-    let flats = await Flat.find().skip(skip_count).limit(10).lean().exec();
+    let skip = +req.params.page_count;
+    skip = (skip - 1) * 10;
+    let flats = await Flat.find().skip(skip).limit(10).lean().exec();
     return res.status(200).send(flats);
   } catch (error) {
     console.log(error);

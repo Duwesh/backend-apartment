@@ -26,4 +26,4 @@ managerSchema.pre("save", async function (next) {
 });
 
 //Manager Model
-module.exports = mongoose.model("manager", managerSchema);
+module.exports = mongoose.model("Manager", managerSchema);
