@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-
+// connecting with database
+const connection = require("./configs/db");
 // creating express app
 const app = express();
 
@@ -14,8 +15,6 @@ const residentController = require("./controllers/resident.controller");
 app.use(cors());
 app.use(express.json());
 
-// connecting with database
-const connection = require("./configs/db");
 // connection();
 
 // port
@@ -37,3 +36,4 @@ app.listen(port, async (req, res) => {
 });
 
 // console.log(`Listening on port ${PORT}`)
+// URL=mongodb+srv://Dk123:Dk123@cluster0.6cihs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
