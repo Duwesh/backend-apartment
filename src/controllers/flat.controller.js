@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
 });
 
 //For pagination
-router.get("/:page_no", async (req, res) => {
+router.get("/:page_num", async (req, res) => {
   try {
     let skip = +req.params.page_count;
     skip = (skip - 1) * 10;
