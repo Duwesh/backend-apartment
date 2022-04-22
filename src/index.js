@@ -19,7 +19,7 @@ const connection = require("./configs/db");
 // connection();
 
 // port
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 // different routes
 app.use("/manager", managerController);
@@ -27,10 +27,10 @@ app.use("/flats", flatController);
 app.use("/residents", residentController);
 
 // listening to port 3007
-app.listen(PORT, async (req, res) => {
+app.listen(port, async (req, res) => {
   try {
     await connection();
-    console.log(`Server Running On Port ${PORT}`);
+    console.log(`Server Running On port ${port}`);
   } catch (er) {
     console.log(er.message);
   }
