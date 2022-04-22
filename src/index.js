@@ -16,7 +16,7 @@ app.use(express.json());
 
 // connecting with database
 const connection = require("./configs/db");
-connection();
+// connection();
 
 // port
 const PORT = process.env.PORT || 5000;
@@ -27,4 +27,13 @@ app.use("/flats", flatController);
 app.use("/residents", residentController);
 
 // listening to port 3007
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.listen(PORT, async (req, res) => {
+  try {
+    await connection();
+    console.log(`Server Running On Port ${PORT}`);
+  } catch (er) {
+    console.log(er.message);
+  }
+});
+
+// console.log(`Listening on port ${PORT}`)
