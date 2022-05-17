@@ -39,7 +39,17 @@ router.get("/", async (req, res) => {
 //For pagination
 router.get("/:page_num", async (req, res) => {
   try {
-    let skip = +req.params.page_count;
+    // const page = req.query.page;
+    // const limit = req.query.limit;
+
+    // const startIndex = (page - 1) * limit;
+    // const endIndex = page * limit;
+
+    // const resultUsers = Flat.slice(startIndex, endIndex);
+
+
+    let skip = parseInt(req.params.page_num);
+    console.log(skip);
     skip = (skip - 1) * 10;
     let flats = await Flat.find().skip(skip).limit(10).lean().exec();
     return res.status(200).send(flats);

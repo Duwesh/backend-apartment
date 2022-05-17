@@ -31,7 +31,7 @@ app.listen(port, async (req, res) => {
     await connection();
     console.log(`Server Running On port ${port}`);
   } catch (er) {
-    console.log(er.message);
+    console.log(`error: ${er.message}`);
   }
 });
 
